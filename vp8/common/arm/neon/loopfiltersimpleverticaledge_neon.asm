@@ -141,6 +141,9 @@
     vst2.8      {d14[6], d15[6]}, [r0]
     vst2.8      {d14[7], d15[7]}, [r2]
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx          lr
     ENDP        ; |vp8_loop_filter_simple_vertical_edge_neon|
 

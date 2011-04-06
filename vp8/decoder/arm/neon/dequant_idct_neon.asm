@@ -118,6 +118,9 @@
     vst1.32         {d1[0]}, [r3], r1
     vst1.32         {d1[1]}, [r3]
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx             lr
 
     ENDP           ; |vp8_dequant_idct_add_neon|

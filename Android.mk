@@ -69,6 +69,14 @@ LOCAL_SRC_FILES += \
 
 LOCAL_CFLAGS += -D__ARM_HAVE_NEON
 
+ifdef NEEDS_ARM_ERRATA_754319_754320
+asm_flags := \
+	--defsym NEEDS_ARM_ERRATA_754319_754320_ASM=1
+
+LOCAL_CFLAGS+= \
+	$(foreach f,$(asm_flags),-Wa,"$(f)")
+endif
+
 LOCAL_MODULE_CLASS := STATIC_LIBRARIES
 intermediates := $(call local-intermediates-dir)
 

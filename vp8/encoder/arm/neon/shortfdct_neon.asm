@@ -90,6 +90,9 @@
 
     vst1.16         {q0, q1}, [r1]
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx              lr
 
     ENDP
@@ -117,6 +120,9 @@
     b               vp8_short_fdct4x4_neon
 
     ; Should never get to this.
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx              lr
 
     ENDP

@@ -125,6 +125,9 @@ recon16x16mb_loop_uv
     ldrne           r2, [sp, #4]        ;load vpred_ptr
     bne             recon16x16mb_loop_uv
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx             lr
 
     ENDP

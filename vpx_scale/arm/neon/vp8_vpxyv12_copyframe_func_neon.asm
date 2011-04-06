@@ -152,6 +152,9 @@ end_of_cp_src_to_dst_uv
     add             sp, sp, #8
 
     vpop            {d8 - d15}
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4 - r11, pc}
 
 ;=============================
@@ -221,6 +224,9 @@ extra_cp_src_to_dst_width_uv_loop
     add             r3, r3, r7, lsl #1
 
     bne             extra_cp_src_to_dst_height_uv_loop
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
 
     b               end_of_cp_src_to_dst_uv
 

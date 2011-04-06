@@ -108,6 +108,9 @@
     vst1.16         {d4}, [r12]
     vst1.16         {d5}, [r0]
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx             lr
 
     ENDP

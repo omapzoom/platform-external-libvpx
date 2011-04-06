@@ -72,6 +72,9 @@ mse16x16_neon_loop
     vst1.32         {d0[0]}, [r12]
     vmov.32         r0, d0[0]
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx              lr
 
     ENDP
@@ -129,6 +132,9 @@ get16x16pred_error_neon_loop
     vsub.s32        d0, d1, d10
 
     vmov.32         r0, d0[0]
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx              lr
 
     ENDP
@@ -166,6 +172,9 @@ get16x16pred_error_neon_loop
     vadd.u64        d0, d2, d3
 
     vmov.32         r0, d0[0]
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx              lr
 
     ENDP

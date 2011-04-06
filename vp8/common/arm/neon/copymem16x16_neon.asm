@@ -52,6 +52,9 @@
     vst1.u8     {q14}, [r2], r3
     vst1.u8     {q15}, [r2], r3
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     mov     pc, lr
 
     ENDP  ; |vp8_copy_mem16x16_neon|

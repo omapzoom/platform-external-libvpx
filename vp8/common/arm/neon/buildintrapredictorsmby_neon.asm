@@ -293,6 +293,9 @@ case_tm_pred_loop
     subs            r12, r12, #1
     bne             case_tm_pred_loop
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4-r8,pc}
 
     ENDP
@@ -576,6 +579,9 @@ case_tm_pred_loop_s
     subs            r12, r12, #1
     bne             case_tm_pred_loop_s
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4-r8,pc}
 
     ENDP

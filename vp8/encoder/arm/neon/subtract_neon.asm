@@ -44,6 +44,10 @@
     vst1.16         {d24}, [r0], r12
     vst1.16         {d26}, [r0], r12
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
+
     bx              lr
     ENDP
 
@@ -82,6 +86,10 @@ subtract_mby_loop
 
     subs            r12, r12, #1
     bne             subtract_mby_loop
+
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
 
     bx              lr
     ENDP
@@ -165,6 +173,10 @@ subtract_mby_loop
     vst1.16         {q13}, [r0]!
     vst1.16         {q14}, [r0]!
     vst1.16         {q15}, [r0]!
+
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
 
     bx              lr
     ENDP

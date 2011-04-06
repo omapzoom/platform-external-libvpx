@@ -62,6 +62,9 @@ extra_copy_neon_loop
     bne             extra_copy_neon_loop
 
 done_copy_neon_loop
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx              lr
     ENDP
 

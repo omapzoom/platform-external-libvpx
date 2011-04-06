@@ -111,6 +111,9 @@ zero_output
     vst1.s16        {q10, q11}, [r3]        ; dqcoeff = 0
     mov             r0, #0
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx              lr
 
     ENDP

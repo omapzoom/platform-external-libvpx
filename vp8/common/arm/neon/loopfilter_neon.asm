@@ -58,6 +58,9 @@
     vst1.u8     {q7}, [r0], r1              ; store oq0
     vst1.u8     {q8}, [r0], r1              ; store oq1
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     ldmia       sp!, {pc}
     ENDP        ; |vp8_loop_filter_horizontal_edge_y_neon|
 
@@ -116,6 +119,9 @@
     vst1.u8     {d16}, [r0]                 ; store u oq1
     vst1.u8     {d17}, [r2]                 ; store v oq1
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     ldmia       sp!, {pc}
     ENDP        ; |vp8_loop_filter_horizontal_edge_uv_neon|
 
@@ -199,6 +205,9 @@
     vst4.8      {d14[6], d15[6], d16[6], d17[6]}, [r0], r1
     vst4.8      {d14[7], d15[7], d16[7], d17[7]}, [r0]
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     ldmia       sp!, {pc}
     ENDP        ; |vp8_loop_filter_vertical_edge_y_neon|
 
@@ -288,6 +297,9 @@
     vst4.8      {d10[7], d11[7], d12[7], d13[7]}, [r0]
     vst4.8      {d14[7], d15[7], d16[7], d17[7]}, [r2]
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     ldmia       sp!, {pc}
     ENDP        ; |vp8_loop_filter_vertical_edge_uv_neon|
 
@@ -394,6 +406,9 @@
     veor        q7, q10, q0                 ; *oq0 = u^0x80
     veor        q8, q12, q0                 ; *oq1 = u^0x80
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx          lr
     ENDP        ; |vp8_loop_filter_horizontal_edge_y_neon|
 

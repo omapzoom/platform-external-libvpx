@@ -210,6 +210,9 @@ sub_pixel_variance8x8_neon_loop
     vsub.s32        d0, d1, d10
 
     vmov.32         r0, d0[0]                   ;return
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4-r5, pc}
 
     ENDP

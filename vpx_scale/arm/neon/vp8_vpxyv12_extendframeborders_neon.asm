@@ -240,6 +240,9 @@ end_of_border_copy_uv
     bne             border_copy_uv
 
     vpop            {d8 - d15}
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4 - r10, pc}
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -511,6 +514,9 @@ end_of_border_copy_uv_b16
     bne             border_copy_uv_b16
 
     vpop            {d8-d15}
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4 - r10, pc}
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -582,6 +588,9 @@ extra_top_bottom_8_b16
     subs            r7, r7, #1
     bne             extra_top_bottom_uv_b16
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     b               end_of_border_copy_uv_b16
 
     ENDP

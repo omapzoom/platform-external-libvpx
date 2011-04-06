@@ -453,6 +453,9 @@ secondpass_filter8x4_only
     vst1.u8         {d8}, [r4], r5
     vst1.u8         {d9}, [r4], r5
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4-r5,pc}
 
     ENDP

@@ -71,6 +71,9 @@
     vstmia.16 r1!, {q0}
     vstmia.16 r1!, {q1}
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx lr
     ENDP    ; |vp8_short_inv_walsh4x4_neon|
 
@@ -90,6 +93,9 @@
     vstmia.16 r1!, {q3}
     vstmia.16 r1!, {q3}
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx lr
     ENDP    ; |vp8_short_inv_walsh4x4_1_neon|
 

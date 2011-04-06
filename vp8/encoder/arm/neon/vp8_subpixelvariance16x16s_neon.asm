@@ -116,6 +116,9 @@ vp8_filt_fpo16x16s_4_0_loop_neon
     vsub.s32        d0, d1, d10
 
     vmov.32         r0, d0[0]                   ;return
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {pc}
     ENDP
 
@@ -212,6 +215,9 @@ vp8_filt_spo16x16s_0_4_loop_neon
     vsub.s32        d0, d1, d10
 
     vmov.32         r0, d0[0]                   ;return
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {pc}
     ENDP
 
@@ -331,6 +337,9 @@ vp8_filt16x16s_4_4_loop_neon
     vsub.s32        d0, d1, d10
 
     vmov.32         r0, d0[0]                   ;return
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {pc}
     ENDP
 
@@ -566,6 +575,9 @@ sub_pixel_variance16x16s_neon_loop
     add             sp, sp, #256
     vmov.32         r0, d0[0]                   ;return
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4, pc}
     ENDP
 

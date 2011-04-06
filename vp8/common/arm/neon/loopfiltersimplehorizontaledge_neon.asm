@@ -100,6 +100,9 @@
     vst1.u8     {q6}, [r0]                  ; store op0
     vst1.u8     {q7}, [r3]                  ; store oq0
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx          lr
     ENDP        ; |vp8_loop_filter_simple_horizontal_edge_neon|
 

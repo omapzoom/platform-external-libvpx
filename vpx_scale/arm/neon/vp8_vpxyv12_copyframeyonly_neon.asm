@@ -393,6 +393,9 @@ extra_cp_src_to_dst_width_loop
 
     bne             extra_cp_src_to_dst_height_loop
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     b               end_of_cp_src_to_dst
 
     ENDP
@@ -493,6 +496,9 @@ extra_cp_src_to_dst_width_loop1
 
     bne             extra_cp_src_to_dst_height_loop1
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     b               end_of_cp_src_to_dst1
 
     ENDP

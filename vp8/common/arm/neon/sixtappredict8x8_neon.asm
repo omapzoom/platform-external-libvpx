@@ -504,6 +504,9 @@ filt_blk2d_spo8x8_loop_neon
 
     bne filt_blk2d_spo8x8_loop_neon
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4-r5,pc}
 
     ENDP

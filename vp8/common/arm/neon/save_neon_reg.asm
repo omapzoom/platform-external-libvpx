@@ -21,6 +21,9 @@
 |vp8_push_neon| PROC
     vst1.i64            {d8, d9, d10, d11}, [r0]!
     vst1.i64            {d12, d13, d14, d15}, [r0]!
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx              lr
 
     ENDP
@@ -28,6 +31,9 @@
 |vp8_pop_neon| PROC
     vld1.i64            {d8, d9, d10, d11}, [r0]!
     vld1.i64            {d12, d13, d14, d15}, [r0]!
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     bx              lr
 
     ENDP
