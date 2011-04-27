@@ -143,6 +143,9 @@ skip_dc_pred_up_left
     vst1.u8         {q0}, [r1]!
     vst1.u8         {q0}, [r1]!
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4-r8,pc}
 case_v_pred
     ; Copy down above row
@@ -165,6 +168,9 @@ case_v_pred
     vst1.u8         {q0}, [r1]!
     vst1.u8         {q0}, [r1]!
     vst1.u8         {q0}, [r1]!
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4-r8,pc}
 
 case_h_pred
@@ -224,6 +230,9 @@ case_h_pred
     vst1.u8         {q2}, [r1]!
     vst1.u8         {q3}, [r1]!
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4-r8,pc}
 
 case_tm_pred
@@ -429,6 +438,9 @@ skip_dc_pred_up_left_s
     vst1.u8         {q0}, [r1], r2
     vst1.u8         {q0}, [r1], r2
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4-r8,pc}
 case_v_pred_s
     ; Copy down above row
@@ -451,6 +463,9 @@ case_v_pred_s
     vst1.u8         {q0}, [r1], r2
     vst1.u8         {q0}, [r1], r2
     vst1.u8         {q0}, [r1], r2
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4-r8,pc}
 
 case_h_pred_s
@@ -510,6 +525,9 @@ case_h_pred_s
     vst1.u8         {q2}, [r1], r2
     vst1.u8         {q3}, [r1], r2
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
     pop             {r4-r8,pc}
 
 case_tm_pred_s

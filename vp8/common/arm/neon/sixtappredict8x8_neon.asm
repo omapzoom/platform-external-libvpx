@@ -313,6 +313,10 @@ filt_blk2d_sp8x8_loop_neon
     bne filt_blk2d_sp8x8_loop_neon
 
     add             sp, sp, #64
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
+
     pop             {r4-r5,pc}
 
 ;---------------------
@@ -416,6 +420,9 @@ filt_blk2d_fpo8x8_loop_neon
     vst1.u8         {d25}, [r4], r5
 
     bne             filt_blk2d_fpo8x8_loop_neon
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
 
     pop             {r4-r5,pc}
 

@@ -97,6 +97,9 @@ secondpass_filter
     vst1.32         {d2[1]}, [r0]
     vst1.32         {d3[0]}, [r1]
     vst1.32         {d3[1]}, [r2]
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
 
     pop             {r4, pc}
 

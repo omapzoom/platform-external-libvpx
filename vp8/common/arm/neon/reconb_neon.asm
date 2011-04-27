@@ -55,6 +55,10 @@
     vst1.32         {d2[0]}, [r1]
     vst1.32         {d3[0]}, [r2], r3
 
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
+
     bx             lr
 
     ENDP

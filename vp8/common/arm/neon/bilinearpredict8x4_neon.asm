@@ -103,6 +103,9 @@ secondpass_filter
     vst1.u8         {d3}, [r0]
     vst1.u8         {d4}, [r1]
     vst1.u8         {d5}, [r2]
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
 
     pop             {r4, pc}
 
@@ -122,6 +125,9 @@ skip_secondpass_filter
     vst1.u8         {d23}, [r4], lr
     vst1.u8         {d24}, [r4], lr
     vst1.u8         {d25}, [r4], lr
+.ifdef NEEDS_ARM_ERRATA_754319_754320_ASM
+    vmov            s0,s0                       ;NOP for ARM Errata
+.endif
 
     pop             {r4, pc}
 
